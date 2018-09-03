@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row class="container">
+    <mat-icon class="example-icon">home</mat-icon>
+    <span>InstApx</span>
+    <span class="example-spacer"></span>
+    <form [formGroup]="search" class="example-form">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Search" formControlName="search">
+        <mat-icon matSuffix class="example-icon">search</mat-icon>
+      </mat-form-field>
+    </form>
+    <span class="example-spacer"></span>
+    <mat-icon class="example-icon">code</mat-icon> <span> GitHub </span>
+  </mat-toolbar-row>
+</mat-toolbar>
