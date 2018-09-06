@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
   // change location
   location$ = of(null);
 
-  constructor(private ws: WebsocketService, private fb: FacebookService, private auth: AuthService) {
+  constructor(public ws: WebsocketService, public fb: FacebookService, public auth: AuthService) {
 
   }
 
