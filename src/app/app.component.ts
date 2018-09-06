@@ -1,9 +1,11 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { WebsocketService } from './providers/websocket.service';
-import { FacebookService, NijaLocation } from './providers/facebook.service';
+import { FacebookService } from './providers/facebook.service';
 import { BehaviorSubject, of } from 'rxjs';
 import { exhaustMap, skipWhile, tap } from 'rxjs/operators';
 import { AuthService, FacebookLoginProvider, SocialUser } from 'angularx-social-login';
+import { NijaLocation } from 'lib/platform-shared';
+import { FBMediaResponse } from 'lib/interface';
 
 
 @Component({
@@ -17,7 +19,7 @@ export class AppComponent implements OnInit {
 
   search$ = new BehaviorSubject<string>(null);
 
-  feed$ = of<any[]>([]);
+  feed$ = of<FBMediaResponse>();
 
   // listen to location changes
   enabledGps$ = new BehaviorSubject(false);
