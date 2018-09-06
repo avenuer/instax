@@ -12,7 +12,7 @@ import {
 } from 'rxjs/operators';
 import { FBMediaResponse } from 'lib/interface';
 import { ApiResponse } from 'lib/api-formats';
-import { FBConfig, LocationQuery } from 'lib/platform-shared';
+import { FBConfig, LocationQuery, NijaLocation } from 'lib/platform-shared';
 import { WebsocketService } from './websocket.service';
 
 /** restrict search to this fields */
@@ -116,17 +116,7 @@ export class FacebookService {
     } else {
       stream = this.fbSearch(query, NijaLocation);
     }
-    return stream.pipe(map(this.cleanResponse));
-  }
-
-  /** cleans the respone to a meanful data */
-  cleanResponse(response: FBMediaResponse) {
-    const { data, paging } = response;
-    const cleanData: CleanedMedia[] = data.map(({ id, name, picture }) => {
-      const { url } = picture.data;
-      return { id, name, url };
-    });
-    return { data: cleanData, paging };
+    return stream;
   }
 
   fbSearch(query, location: LocationQuery) {

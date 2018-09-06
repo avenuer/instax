@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { InstagramLogin, WebSocketEvents } from 'lib/platform-shared';
+import { InstagramLogin, WebSocketEvents, SearchResponse } from 'lib/platform-shared';
 import { BehaviorSubject } from 'rxjs';
 
 declare const io;
@@ -10,7 +10,7 @@ declare const io;
 export class WebsocketService {
 
   /** observable stream for websocket events */
-  realTimeEvent = new BehaviorSubject<InstagramLogin>(null);
+  realTimeEvent = new BehaviorSubject<SearchResponse>(null);
 
   /** setup websocket connection to the server */
   private socket = io.call(window, ['/']);
@@ -32,7 +32,7 @@ export class WebsocketService {
 
   /** listen to realtime events */
   realTimeInit() {
-    this.socket.on(WebSocketEvents.RealTimeStarts, (data: InstagramLogin) => {
+    this.socket.on(WebSocketEvents.SearchResponse, (data: SearchResponse) => {
       this.realTimeEvent.next(data);
     });
   }
