@@ -40,7 +40,7 @@ router.get('/subscriptions', (ctx: Context) => {
   ctx.response.body = successFactory(memcache.allUserCaches());
 });
 
-router.use('/medias', (ctx: Context) => {
+router.get('/medias', (ctx: Context) => {
   const h = JSON.stringify(ctx.request.headers || {});
   const q = JSON.stringify(ctx.query || {});
   const b = JSON.stringify(ctx.body || {});
