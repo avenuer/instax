@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "npm-run-all build server",
+    "start": "npm-run-all typings build server",
     "serve": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "typings": "typings install",
     "server": "ts-node ./lib/server.ts"
   },
   "private": true,
@@ -64,6 +65,7 @@
     "ts-node": "^7.0.1",
     "tslint": "~5.9.1",
     "typescript": "~2.7.2",
+    "typings": "^2.1.1",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {}

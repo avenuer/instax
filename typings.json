@@ -1,0 +1,11 @@
+{
+  "name": "inst-ax",
+  "dependencies": {
+    "koa-static": "registry:dt/koa-static#2.0.0+20161219223325",
+    "pino": "registry:dt/pino#3.0.1+20170127140257"
+  },
+  "globalDependencies": {
+    "koa-compress": "registry:dt/koa-compress#2.0.0+20161219223325",
+    "socket.io": "registry:dt/socket.io#1.4.4+20170313110830"
+  }
+}
