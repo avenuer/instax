@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "prestart": "npm-run-all typings build",
-    "start": "npm-run-all server",
+    "start": "npm-run-all typings server",
     "serve": "ng serve",
     "build": "ng build --prod",
     "build:dev": "ng build",
