@@ -1,2 +1,2 @@
-<app-tool-bar></app-tool-bar>
-<app-feed-list></app-feed-list>
+<app-tool-bar [img]="fb.img | async" (links)="links($event)" ></app-tool-bar>
+<app-feed-list ></app-feed-list>

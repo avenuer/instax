@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { exhaustMap, debounceTime } from 'rxjs/operators';
 
@@ -11,6 +11,9 @@ export class ToolBarComponent implements OnInit {
 
   search: FormGroup;
   @Output() emitter = new EventEmitter();
+  @Output() links = new EventEmitter();
+
+  @Input() img;
 
   constructor(private fb: FormBuilder) {
 
