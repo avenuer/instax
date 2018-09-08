@@ -1,2 +1,8 @@
-<app-tool-bar [img]="fb.img | async" (links)="links($event)" ></app-tool-bar>
-<app-feed-list ></app-feed-list>
+<app-tool-bar (emitter)="search($event)" [img]="fb.img | async" (links)="links($event)"></app-tool-bar>
+
+<p>  your location is {{ location$ | async | json }} </p>
+<p *ngIf="searchQuery !== ''">  your search is {{ searchQuery  }} </p>
+
+<mat-spinner class="align-center" *ngIf="ws.loading" ></mat-spinner>
+
+<app-feed-list (emitter)="ws.loadMore()" [feed]="ws.realTimeEvent | async "></app-feed-list>

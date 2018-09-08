@@ -2,8 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule, MatIconModule, MatFormFieldModule, MatInputModule, MatCardModule, MatGridListModule  } from '@angular/material';
+import { MatToolbarModule, MatIconModule,
+   MatFormFieldModule, MatInputModule, MatCardModule,
+    MatGridListModule, MatProgressSpinnerModule } from '@angular/material';
 import { SocialLoginModule, AuthServiceConfig, FacebookLoginProvider } from 'angularx-social-login';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
 
 import { AppComponent } from './app.component';
 import { ToolBarComponent } from './tool-bar/tool-bar.component';
@@ -35,6 +39,7 @@ export function provideConfig() {
       BrowserAnimationsModule,
       ReactiveFormsModule,
       HttpClientModule,
+      InfiniteScrollModule,
       SocialLoginModule,
       MatToolbarModule,
       MatIconModule,
@@ -42,6 +47,7 @@ export function provideConfig() {
       MatInputModule,
       MatCardModule,
       MatGridListModule,
+      MatProgressSpinnerModule
    ],
    providers: [WebsocketService, { useFactory: provideConfig, provide: AuthServiceConfig }],
    bootstrap: [

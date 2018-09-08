@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { WebsocketService } from './providers/websocket.service';
 import { FacebookService } from './providers/facebook.service';
 import { BehaviorSubject, of } from 'rxjs';
-import { exhaustMap, skipWhile, tap } from 'rxjs/operators';
+import { exhaustMap, skipWhile, tap, map } from 'rxjs/operators';
 import { AuthService, FacebookLoginProvider, SocialUser } from 'angularx-social-login';
 import { NijaLocation } from 'lib/platform-shared';
 import { FBMediaResponse } from 'lib/interface';
@@ -19,6 +19,10 @@ export class AppComponent implements OnInit {
 
   search$ = new BehaviorSubject<string>(null);
 
+  searchQuery = '';
+
+  github = `https://github.com/avenuer/instax`;
+
   feed$ = of<FBMediaResponse>();
 
   // listen to location changes
@@ -30,6 +34,11 @@ export class AppComponent implements OnInit {
 
   }
 
+  search(data: { search: string }) {
+    this.searchQuery = data.search;
+    this.ws.search({ q: this.searchQuery });
+  }
+
   links(action: string) {
     console.log(action);
     switch (action) {
@@ -37,6 +46,10 @@ export class AppComponent implements OnInit {
       this.auth.signIn(FacebookLoginProvider.PROVIDER_ID, { scope: 'email, manage_pages' });
         return;
       case 'github':
+        window.open(this.github);
+        return;
+      case 'gps':
+        this.location$ = this.fb.getUserLocation().pipe(map(e => (e) ? e : NijaLocation));
         return;
       default:
         break;

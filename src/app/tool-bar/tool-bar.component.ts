@@ -29,7 +29,9 @@ export class ToolBarComponent implements OnInit {
     this.setup();
     this.search.valueChanges
       .pipe(debounceTime(400))
-      .subscribe(this.emitter.emit);
+      .subscribe((data) => {
+        this.emitter.emit(data);
+      });
   }
 
 }

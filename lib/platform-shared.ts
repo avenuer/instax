@@ -1,4 +1,4 @@
-import { Datum, Paging2 } from './interface';
+import { Datum, Paging2, Image } from './interface';
 
 // CROSS-PLATFORM VALUES DONT IMPORT NATIVE MODULES OR FUNCTIONALTY
 
@@ -6,7 +6,8 @@ export enum WebSocketEvents {
   Connection = 'connection',
   InstagramLogin = 'instagram-login',
   SearchRequest = 'search-request',
-  SearchResponse = 'search-response'
+  SearchResponse = 'search-response',
+  NextCursor = 'load-next-cursor-response'
 }
 
 /** default location if location not provided */
@@ -41,7 +42,11 @@ export interface SearchQueryRequest extends SearchQuery {
   token?: string;
 }
 
+export interface CleanedImage extends Image {
+  name: string;
+}
+
 export interface SearchResponse {
-  cleaned: Datum[];
+  cleaned: CleanedImage[];
   paging: Paging2;
 }
