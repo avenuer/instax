@@ -41,7 +41,7 @@ export interface Datum {
   name?: string;
 }
 
-interface Image {
+export interface Image {
   height: number;
   source: string;
   width: number;

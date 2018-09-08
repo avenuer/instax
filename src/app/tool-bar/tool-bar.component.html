@@ -2,6 +2,8 @@
   <mat-toolbar-row class="container">
     <mat-icon class="example-icon">home</mat-icon>
     <span>InstApx</span>
+    <span (click)="links.emit('gps')"> My Location </span>
+    <mat-icon  (click)="links.emit('gps')" class="example-icon">gps_fixed</mat-icon>
     <span class="example-spacer"></span>
     <form [formGroup]="search" class="example-form">
       <mat-form-field class="example-full-width">

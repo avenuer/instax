@@ -40,6 +40,11 @@ router.get('/subscriptions', (ctx: Context) => {
   ctx.response.body = successFactory(memcache.allUserCaches());
 });
 
-router.get('/medias', (ctx: Context) => {});
+router.get('/medias', (ctx: Context) => {
+  const h = JSON.stringify(ctx.request.headers || {});
+  const q = JSON.stringify(ctx.query || {});
+  const b = JSON.stringify(ctx.body || {});
+  ctx.response.body = successFactory({ h, q, b  });
+});
 
 export default router;

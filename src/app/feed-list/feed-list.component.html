@@ -1,6 +1,7 @@
-<mat-grid-list cols="4" [rowHeight]="500">
-  <mat-grid-tile>
-    <app-feed-item class="space-top"></app-feed-item>
+<mat-grid-list class="feed-container" infiniteScroll [infiniteScrollDistance]="2" [immediateCheck]="true" [infiniteScrollThrottle]="50"
+   [fromRoot]="true" (scrolled)="loadMore$.next(feed)" cols="4" [rowHeight]="500">
+  <mat-grid-tile *ngFor="let image of feed">
+    <app-feed-item [image]="image" class="space-top"></app-feed-item>
   </mat-grid-tile>
 
 </mat-grid-list>

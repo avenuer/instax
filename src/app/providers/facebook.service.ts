@@ -42,13 +42,17 @@ export class FacebookService {
     this.http
       .get<ApiResponse<FBConfig>>('/api/config/facebook')
       .pipe(
-        skipWhile(() => (window as any).FB),
         first(),
         map(e => e.data),
         delay(1000)
       )
       .subscribe(config => {
-        (window as any).FB.init(config);
+        const fb = (window as any).FB;
+        if (!fb) {
+          this.initFaceBook();
+          return;
+        }
+        fb.init(config);
         this.confirmLogin();
       });
   }
@@ -67,6 +71,9 @@ export class FacebookService {
       .subscribe(res => {
         this.img = of(res.img);
         this.ws.login({ username: res.email, token: res.token });
+        this.ws.search({ q: 'lagos', token: res.token });
+      }, (err) => {
+        this.ws.search({ q: 'nigeria' });
       });
   }
 

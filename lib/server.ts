@@ -9,15 +9,12 @@ import * as compress from 'koa-compress';
 import router from './routes';
 import { logger } from './shared-instance';
 import realTime from './websocket';
-import { getAppToken } from './facebook';
 
 // development enviromental variables
 const ENV  = process.env.NODE_ENV || 'development';
 if (ENV === 'development') {
   require('dotenv').config();
 }
-
-getAppToken().then(console.log);
 
 const PORT = process.env.PORT || 3000;
 
